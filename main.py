@@ -26,5 +26,4 @@ random_item = random.choice(words)
 def hangman():
     print("oogie boogie")
 
-
-
+def show_word
