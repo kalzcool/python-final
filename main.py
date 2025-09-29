@@ -22,38 +22,48 @@ else:
 import random
 
 #RA KW AB CC
-words = ["cactus", "potato", "butter", "rabbit", "bikini", "cobweb", "absurd", "zombie", "bagpipes", "pneumonia", "knapsack", "jukebox", "syndrome", "unworthy",  "grogginess", "jawbreaker", "kilobyte", "fishhook", "beekeeper"]
+words = ["cactus", "cactus"]
 
 #CC 
-random_item = random.choice(words)
 
+chosen_word = random.choice(words)
 #RA
 def hangman():
-    word = random_item
-    random_item_list = list(random_item)
-    word_length = len(word)
-    display = []
+    chosen_word = random.choice(words)
+    random_item_list = list(chosen_word)
+    word_length = len(chosen_word)
+    display = ["_" ]
     for _ in range(word_length):
         display += "_"
     print(display)
 end_of_game = False
 lives = 6
+#CC
 guessed_letters = []
 hangman()
-def show_words():
-    guess = input("give me a letter fine sir:").lower()
-#KW
-    for letter in words:
-        if guess == letter:
-            print(f"You guessed correctly, you have {lives} lives left.")
-            break
-        else:
-            print(f"You guessed incorrectly, you have {lives} lives left.")
-        lives -= 1
-        if lives == 0:
-            print("You loose")
-            sys.exit()
 
-   # if guess 
-show_words()
+def show_words(guessed_letters, lives = 6): 
+    guess = input("give me a letter fine sir:\n").lower()
+    guessed_letters.append(guess)
+#KW
+    chosen_word = random.choice(words)
+    if guess in chosen_word:
+         print(f"You guessed correctly, you have {lives} lives left.")
+         
+    else:
+        lives -= 1
+        print(f"You guessed incorrectly, you have {lives} lives left.")
+        if lives == 0 :
+                print("You loose")
+                sys.exit()
+
+   #CC
+
+show_words(guessed_letters)
+show_words(guessed_letters, lives = 5)
+show_words(guessed_letters, lives = 5)
+show_words(guessed_letters, lives = 5)
+show_words(guessed_letters, lives = 5)
+show_words(guessed_letters, lives = 5)
+
     
